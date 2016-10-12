@@ -74,7 +74,6 @@ public class SearchActivity extends AppCompatActivity {
                             list = response.body().getList();
                             initListBean();
                         }
-
                         @Override
                         public void onFailure(Call<Search> call, Throwable t) {
                         }

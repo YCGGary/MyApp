@@ -22,11 +22,12 @@
 
         <ImageButton
             android:id="@+id/right_toolBar_img_btn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="right"
             android:background="@android:color/transparent"
             android:scaleType="centerCrop"
+            android:onClick="onShare"
             android:src="@mipmap/share" />
     </android.support.v7.widget.Toolbar>
 
@@ -59,6 +60,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:src="@mipmap/def_loading"
                 app:civ_border_color="@color/colorAccent"
                 app:civ_border_width="1dp" />

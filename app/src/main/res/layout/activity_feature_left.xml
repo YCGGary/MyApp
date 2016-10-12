@@ -20,10 +20,11 @@
 
         <ImageButton
             android:id="@+id/left_toolBar_img_btn"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="right"
             android:scaleType="centerCrop"
+            android:onClick="onShare"
             android:background="@android:color/transparent"
             android:src="@mipmap/share" />
     </android.support.v7.widget.Toolbar>

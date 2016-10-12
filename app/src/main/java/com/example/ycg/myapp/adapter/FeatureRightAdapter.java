@@ -52,7 +52,7 @@ public class FeatureRightAdapter extends BaseAdapter {
             viewHolder = (ViewHolder) convertView.getTag();
         }
         final String img_url = HttpUtils.BASE_URL + newGame.getList().get(position).getIconurl();
-        final String img = HttpUtils.BASE_URL + newGame.getList().get(position).getAuthorimg();
+        final String img = HttpUtils.BASE_URL +"/"+ newGame.getList().get(position).getAuthorimg();
         viewHolder.tv_dsc.setText(newGame.getList().get(position).getName());
         viewHolder.tv_time.setText(newGame.getList().get(position).getAddtime());
         Picasso.with(context).load(img_url).into(viewHolder.imageView);
