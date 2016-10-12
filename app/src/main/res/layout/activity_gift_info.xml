@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.ycg.myapp.activity.GiftInfoActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_gift"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/colorAccent">
+
+        <TextView
+            android:id="@+id/gift_toolBar_text_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="haha"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ImageButton
+        android:id="@+id/btn_share"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="15dp"
+        android:onClick="share"
+        android:background="@mipmap/share"
+        android:scaleType="centerCrop"
+        android:text="搜索"
+        android:textColor="#ffffff" />
+
+    <RelativeLayout
+        android:id="@+id/gift_rl_one"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/toolbar_gift"
+        android:background="@mipmap/lb_bg">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_giftdetails"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/def_loading"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="2dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="#669f6335"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/text_gift_details_date"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:gravity="center"
+                android:text="0000"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/text_gift_details_number"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#0000ff" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_toLeftOf="@+id/text_gift_details_number"
+                android:layout_toStartOf="@+id/text_gift_details_number"
+                android:gravity="center"
+                android:text="礼包剩余:"
+                android:textColor="#ffffff" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textView_shuoming"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gift_rl_one"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="礼包说明" />
+
+    <View
+        android:id="@+id/view_one"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@id/textView_shuoming"
+        android:layout_alignRight="@id/textView_shuoming"
+        android:layout_below="@id/textView_shuoming"
+        android:layout_marginTop="2dp"
+        android:background="#54e679" />
+
+    <TextView
+        android:id="@+id/text_gift_details_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/textView_shuoming"
+        android:layout_below="@id/view_one"
+        android:layout_marginTop="4dp"
+        android:text="0000" />
+
+    <TextView
+        android:id="@+id/textView_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/text_gift_details_information"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="兑换方式" />
+
+    <View
+        android:id="@+id/view_two"
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:layout_alignLeft="@id/textView_style"
+        android:layout_alignRight="@id/textView_style"
+        android:layout_below="@id/textView_style"
+        android:layout_marginTop="2dp"
+        android:background="#54e679" />
+
+    <TextView
+        android:id="@+id/text_gift_details_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/textView_style"
+        android:layout_below="@id/view_two"
+        android:layout_marginTop="4dp"
+        android:text="0000" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/rl222"
+        android:background="#888888" />
+
+    <RelativeLayout
+        android:id="@+id/rl222"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_buy"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_centerInParent="true"
+            android:background="@color/colorAccent"
+            android:onClick="jump"
+            android:text="立即领取" />
+
+        <ImageButton
+            android:id="@+id/image_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@mipmap/libao"
+            android:onClick="jump" />
+    </RelativeLayout>
+</RelativeLayout>
