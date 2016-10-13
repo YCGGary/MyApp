@@ -13,6 +13,8 @@ import com.example.ycg.myapp.adapter.OpenRightAdapter;
 import com.example.ycg.myapp.bean.OpenRight;
 import com.example.ycg.myapp.http.GiftListService;
 import com.example.ycg.myapp.http.HttpUtils;
+import com.example.ycg.myapp.refreshview.MyRefreshListView;
+import com.example.ycg.myapp.refreshview.OnRefreshListener;
 import com.xray.daydaybasketball.R;
 
 import java.util.List;
@@ -25,7 +27,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class OpenRightFragment extends Fragment {
-    ListView listView;
+    MyRefreshListView listView;
     OpenRight openRight;
 
     public OpenRightFragment() {
@@ -38,7 +40,7 @@ public class OpenRightFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_open_right, container, false);
-        listView = (ListView) view.findViewById(R.id.open_right_listView);
+        listView = (MyRefreshListView) view.findViewById(R.id.open_right_listView);
         GiftListService service = HttpUtils.getGiftListService();
         service.getWebfutureTest().enqueue(new Callback<OpenRight>() {
             @Override
@@ -59,6 +61,27 @@ public class OpenRightFragment extends Fragment {
     private void initData() {
         List<OpenRight.InfoBean> infoBean = openRight.getInfo();
         listView.setAdapter(new OpenRightAdapter(getContext(), infoBean));
+        listView.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onDownPullRefresh() {
+                listView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        listView.hideHeadView();
+                    }
+                },2000);
+            }
+
+            @Override
+            public void onLoadingMore() {
+                listView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        listView.hideFootView();
+                    }
+                },2000);
+            }
+        });
     }
 
 }

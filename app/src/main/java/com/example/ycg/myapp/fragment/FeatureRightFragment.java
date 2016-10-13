@@ -14,6 +14,8 @@ import com.example.ycg.myapp.adapter.FeatureRightAdapter;
 import com.example.ycg.myapp.bean.NewGame;
 import com.example.ycg.myapp.http.GiftListService;
 import com.example.ycg.myapp.http.HttpUtils;
+import com.example.ycg.myapp.refreshview.MyRefreshListView;
+import com.example.ycg.myapp.refreshview.OnRefreshListener;
 import com.xray.daydaybasketball.R;
 
 import java.util.List;
@@ -26,7 +28,7 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class FeatureRightFragment extends Fragment {
-    ListView listView;
+    MyRefreshListView listView;
     NewGame newGame;
 
     public FeatureRightFragment() {
@@ -38,7 +40,7 @@ public class FeatureRightFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_feature_right, container, false);
-        listView = (ListView) view.findViewById(R.id.lv_week);
+        listView = (MyRefreshListView) view.findViewById(R.id.lv_week);
         GiftListService service = HttpUtils.getGiftListService();
         service.getNewGame(1).enqueue(new Callback<NewGame>() {
             @Override
@@ -55,6 +57,27 @@ public class FeatureRightFragment extends Fragment {
     }
     private void initData() {
         listView.setAdapter(new FeatureRightAdapter(getContext(), newGame));
+        listView.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onDownPullRefresh() {
+                listView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        listView.hideHeadView();
+                    }
+                },2000);
+            }
+
+            @Override
+            public void onLoadingMore() {
+                listView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        listView.hideFootView();
+                    }
+                },2000);
+            }
+        });
     }
 
 }

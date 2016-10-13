@@ -14,6 +14,8 @@ import com.example.ycg.myapp.bean.OpenRight;
 import com.example.ycg.myapp.bean.Search;
 
 import retrofit2.Call;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -49,8 +51,9 @@ public interface GiftListService {
     @GET("/majax.action?method=bdxqschild")
     Call<FeatureWeekInfo> getFeatureWeekInfo(@Query("id") int id);
 
+    @FormUrlEncoded
     @POST("/majax.action?method=searchGift")
-    Call<Search> postSearch(@Query("key") String key);
+    Call<Search> postSearch(@Field("key") String key);
 
     @GET("/majax.action?method=hotpushForAndroid")
     Call<Hot> getHotInfo();

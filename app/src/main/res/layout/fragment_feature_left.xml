@@ -4,10 +4,10 @@
     android:layout_height="match_parent"
     tools:context="com.example.ycg.myapp.fragment.FeatureLeftFragment">
 
-    <ListView
+    <com.example.ycg.myapp.refreshview.MyRefreshListView
         android:id="@+id/lv_newgame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent"></com.example.ycg.myapp.refreshview.MyRefreshListView>
 
 </RelativeLayout>
 

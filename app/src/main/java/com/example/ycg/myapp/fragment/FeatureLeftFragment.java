@@ -14,6 +14,8 @@ import com.example.ycg.myapp.bean.FeatureWeek;
 import com.example.ycg.myapp.bean.NewGame;
 import com.example.ycg.myapp.http.GiftListService;
 import com.example.ycg.myapp.http.HttpUtils;
+import com.example.ycg.myapp.refreshview.MyRefreshListView;
+import com.example.ycg.myapp.refreshview.OnRefreshListener;
 import com.xray.daydaybasketball.R;
 
 import retrofit2.Call;
@@ -24,18 +26,19 @@ import retrofit2.Response;
  * A simple {@link Fragment} subclass.
  */
 public class FeatureLeftFragment extends Fragment {
-    ListView listView;
+    MyRefreshListView listView;
     FeatureWeek featureWeek;
 
     public FeatureLeftFragment() {
         // Required empty public constructor
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_feature_left, container, false);
-        listView = (ListView) view.findViewById(R.id.lv_newgame);
+        listView = (MyRefreshListView) view.findViewById(R.id.lv_newgame);
         GiftListService service = HttpUtils.getGiftListService();
         service.getFeatureWeek(0).enqueue(new Callback<FeatureWeek>() {
             @Override
@@ -43,6 +46,7 @@ public class FeatureLeftFragment extends Fragment {
                 featureWeek = response.body();
                 initData();
             }
+
             @Override
             public void onFailure(Call<FeatureWeek> call, Throwable t) {
 
@@ -50,7 +54,29 @@ public class FeatureLeftFragment extends Fragment {
         });
         return view;
     }
+
     private void initData() {
         listView.setAdapter(new FeatureLeftAdapter(getContext(), featureWeek));
+        listView.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onDownPullRefresh() {
+                listView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        listView.hideHeadView();
+                    }
+                }, 2000);
+            }
+
+            @Override
+            public void onLoadingMore() {
+                listView.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        listView.hideFootView();
+                    }
+                }, 2000);
+            }
+        });
     }
 }

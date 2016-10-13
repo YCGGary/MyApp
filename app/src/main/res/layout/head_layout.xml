@@ -8,24 +8,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dip" >
-
-        <ImageView
-            android:id="@+id/iv_listview_header_arrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:minWidth="30dip"
-            android:src="@mipmap/ic_launcher"
-            android:visibility="visible"/>
-
         <ProgressBar
             android:id="@+id/pb_listView_header"
-            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:indeterminateDrawable="@drawable/progressbar01"
-            android:visibility="gone" />
+            />
     </FrameLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -39,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="下拉刷新"
-            android:textColor="#FF0000"
+            android:textColor="@color/colorAccent"
             android:textSize="18sp" />
 
         <TextView
@@ -48,7 +37,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dip"
             android:text="最后刷新时间: 2014-10-10 12:56:12"
-            android:textColor="@android:color/holo_red_dark"
+            android:textColor="@color/colorAccent"
             android:textSize="14sp" />
     </LinearLayout>
 
